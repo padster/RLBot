@@ -37,7 +37,7 @@ class Agent:
         try:
             # Establish (non-blocking) connection to client if they're here.
             (self.client, self.clientAddress) = self.sock.accept()
-            print (">>>> Connected to %s" % (self.clientAddress))
+            print (">>>> Connected to %s" % str(self.clientAddress))
             return True
         except IOError as e:
             return False

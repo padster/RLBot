@@ -20,6 +20,7 @@ At this stage you can verify it works by also running `python testClient.py` - t
 ##### 2) Get the client working
 a) Install the [Unity 3D](https://unity3d.com/unity) app; the personal version should be fine, and free!
 b) Install the [Google VR Unity packages](https://developers.google.com/vr/develop/unity/get-started) - they are used in the app, but not included in this repository.
+c) Get the VR app ("Assets/GameScene.unity") building in Unity - you'll probably need to make sure the GvrEditorEmulator and GvrReticlePointer objects are working, they're the ones that use Google VR code.
 d) Select GameState, and change the local IP property to be that of the computer your server is running on (try checking `ipconfig`, it might look something like `192.168.x.y`)
 e) If your server from part 1 is working, you can hit play in Unity and it should connect and start drawing the game inside the Unity UI.
 
