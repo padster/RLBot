@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 /**
  * Script that runs during the game, pulls state from botServer, and updates the UI.
@@ -28,6 +29,8 @@ public class listener : MonoBehaviour {
 
     // Called at the start, do a blocking connect to the server.
 	void Start () {
+        StartCoroutine(LoadCardboardAsync());
+
         string serverIP = "localhost";
         int serverPort = 3451;
         if (PlayerPrefs.HasKey(launcher.KEY_IP)) {
@@ -49,6 +52,13 @@ public class listener : MonoBehaviour {
             Debug.Log("RLVR Failed :(");
         }
 	}
+    
+    // Load the cardboard code and turn in on when done.
+    IEnumerator LoadCardboardAsync() {
+        XRSettings.LoadDeviceByName("cardboard");
+        yield return null;
+        XRSettings.enabled = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {

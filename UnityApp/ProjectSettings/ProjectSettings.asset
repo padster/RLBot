@@ -267,6 +267,7 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Enabled: 1
     m_Devices:
+    - None
     - cardboard
   m_BuildTargetEnableVuforiaSettings: []
   openGLRequireES31: 0

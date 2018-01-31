@@ -16,6 +16,7 @@ public class launcher : MonoBehaviour {
 
     // Called at start, load last value from prefs
     void Start() {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
         if (PlayerPrefs.HasKey(KEY_IP)) {
             ipInput.text = PlayerPrefs.GetString(KEY_IP);
         }
