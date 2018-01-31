@@ -21,10 +21,6 @@ public class listener : MonoBehaviour {
     private NetworkStream clientStreamReader;
     private byte[] buffer = new byte[BUFF_LEN];
 
-    // Address and port for the server. Set these from the Unity UI.
-    public string localIP = "localhost";
-    public int localPort = 3451;
-
     // Game objects to move around.
     public GameObject ball;
     public GameObject playerCar;
@@ -32,11 +28,20 @@ public class listener : MonoBehaviour {
 
     // Called at the start, do a blocking connect to the server.
 	void Start () {
+        string serverIP = "localhost";
+        int serverPort = 3451;
+        if (PlayerPrefs.HasKey(launcher.KEY_IP)) {
+            serverIP = PlayerPrefs.GetString(launcher.KEY_IP);
+        }
+        if (PlayerPrefs.HasKey(launcher.KEY_PORT)) {
+            serverPort = PlayerPrefs.GetInt(launcher.KEY_PORT);
+        }
+
         try {
-            Debug.Log("RLVR Connecting to " + localIP + ":" + localPort + "...");
+            Debug.Log("RLVR Connecting to " + serverIP + ":" + serverPort + "...");
             // TODO: UDP instead?
             TcpClient tcpClient = new TcpClient();
-            tcpClient.Connect(localIP, localPort);
+            tcpClient.Connect(serverIP, serverPort);
             clientStreamReader = tcpClient.GetStream();
             Debug.Log("RLVR Connected!");
         } catch (System.Exception e) {
